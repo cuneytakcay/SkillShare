@@ -3,6 +3,7 @@ import { Row, Col, Input, Button, Card, CardTitle } from 'react-materialize';
 import API from '../../utils/API';
 import './HomePage.css';
 import logo from '../../img/logo.png';
+import Post from '../../components/Post'
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -111,6 +112,9 @@ class HomePage extends React.Component {
             )}
           </Col>
           <Col s={1} />
+        </Row>
+        <Row>
+          <Post />
         </Row>
       </div>
     );
