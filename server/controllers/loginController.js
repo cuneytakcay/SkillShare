@@ -32,8 +32,8 @@ module.exports = () => {
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
-  passport.deserializeUser((id, done) => {
-    db.User.findById(id)
+  passport.deserializeUser((username, done) => {
+    db.User.findOne({ username })
       .then((user) => {
         if (user == null) {
           done(new Error('Wrong user id.'));

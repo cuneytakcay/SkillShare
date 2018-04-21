@@ -18,11 +18,12 @@ app.use(cookieParser());
 app.use(express.static('../client/build'));
 app.use(require('express-session')({ secret: 'finish the entire project', resave: true, saveUninitialized: true }));
 
+login(app);
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(require('./routes'));
 
-login(app);
 
 // for production only! where we serve the index.html through which our React code is delivered
 if (process.env.NODE_ENV === 'production') {
