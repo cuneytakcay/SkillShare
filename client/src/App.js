@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import UserPage from './pages/UserPage';
 import SignInForm from './pages/SignInPage';
 import SignUpForm from './pages/SignUpPage';
+import API from './utils/API';
 
 class App extends React.Component {
   state = { signedIn: false, userName: '' }
@@ -18,6 +19,12 @@ class App extends React.Component {
     console.log('test')
   }
 
+  componentWillMount() {
+    API.getOwnData().then(res => {
+      console.log(res);
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -27,7 +34,7 @@ class App extends React.Component {
           <Route exact path="/signup" render={() => (<Banner signedIn={false} />)} />
           <Route path="/users/:username" render={() => (<Banner signedIn={true} />)} />
           <Switch>
-            <Route exact path="/" render={() => (this.state.userName ? (<Redirect to={`/users/${this.state.userName}`} />) : (<HomePage />))} />
+            <Route exact path="/" render={() => ((<HomePage />))} />
             <Route exact path="/signin" render={() => (this.state.userName ? (<Redirect to={`/users/${this.state.userName}`} />) : (<SignInForm onSignIn={this.signedInHandler} />))} />
             <Route exact path="/signup" render={() => (this.state.userName ? (<Redirect to={`/users/${this.state.userName}`} />) : (<SignUpForm />))} />
             <Route path="/users/:username" render={({ match }) => (

@@ -22,6 +22,9 @@ export default {
   // Data of the logged in user will be sent to the user page
   getUserData: username => axios.get(`/api/users/${username}`),
 
+  // Checks if current user is logged in
+  getOwnData: () => axios.get('/api/self'),
+
   // Upload an image
   uploadImage: img => axios.post('/api/upload', img, {
     headers: {
@@ -31,12 +34,13 @@ export default {
 
   // Add a need or skill
   create: item => {
-    delete item.type;
     ( (item.type === "Need") ? ( 
-      axios.post('/api/needs', item)
-    ) : (
-      axios.post('/api/skills', item)
-    ) 
+        delete item.type,
+        axios.post('/api/needs', item)
+      ) : (
+        delete item.type,
+        axios.post('/api/skills', item)
+      ) 
     )
   }
 };
