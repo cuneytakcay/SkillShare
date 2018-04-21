@@ -3,6 +3,7 @@ import { Row, Col, Input, Button, Icon } from 'react-materialize';
 import { SideActive } from '../../components/SideNav';
 import API from '../../utils/API';
 import './UserPage.css';
+import { Link } from 'react-router-dom';
 import noImage from '../../img/no-image.png';
 
 class UserPage extends React.Component {
@@ -41,6 +42,7 @@ class UserPage extends React.Component {
     const form = new FormData();
 
     form.append("userFile", this.state.selectedImage);
+    form.append("userID", this.state.id);
 
     API.uploadImage(form)
       .then(res => {
@@ -185,6 +187,7 @@ class UserPage extends React.Component {
                 </Row>
                 <Row>
                   <Button onClick={this.handleSubmit} className="userpage-btn">Submit</Button>
+                  <Link to='/'>HOME</Link> 
                 </Row>
               </Col>
             </Row>

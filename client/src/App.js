@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import UserPage from './pages/UserPage';
 import SignInForm from './pages/SignInPage';
 import SignUpForm from './pages/SignUpPage';
+import API from './utils/API';
 
 class App extends React.Component {
   state = { signedIn: false, userName: '' }
@@ -16,6 +17,12 @@ class App extends React.Component {
       userName: username
     });
     console.log('test')
+  }
+
+  componentWillMount() {
+    API.getOwnData().then(res => {
+      console.log(res);
+    })
   }
 
   render() {
