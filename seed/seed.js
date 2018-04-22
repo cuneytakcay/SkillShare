@@ -8,7 +8,6 @@ const userSeeds = [
     email: 'chicken@sandw.ich',
     img: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg',
     hash: 'hash',
-    salt: 'salt',
   },
   {
     username: 'blackbeanburger',
@@ -17,7 +16,6 @@ const userSeeds = [
     img: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg',
     email: 'black@bean.burger',
     hash: 'hash',
-    salt: 'salt',
   },
 ];
 

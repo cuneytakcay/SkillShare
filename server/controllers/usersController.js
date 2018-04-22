@@ -34,7 +34,6 @@ module.exports = {
                   email: req.body.email,
                   img: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg',
                   hash: hashWord,
-                  salt: salt,
                 };
                 db.User
                   .create(nooUser).save()

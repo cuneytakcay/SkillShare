@@ -19,9 +19,9 @@ module.exports = () => {
         }
         // if exists check password
         // hash with user obj salt param
-        const hashWord = bcrypt.hashSync(password, user.salt);
+        const hashWord = bcrypt.compareSync(password, user.hash);
         // match hashWords
-        if (user.hash === hashWord) {
+        if (hashWord) {
           return done(null, user);
         }
         return done(null, false, { message: 'Wrong Password' });

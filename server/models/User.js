@@ -6,7 +6,6 @@ const User = ko.Model('User', {
   lastName: ko.String,
   email: ko.String,
   hash: ko.String,
-  salt: ko.String,
   img: ko.String,
   $$indexes: {
     username: {
